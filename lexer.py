@@ -1,12 +1,9 @@
 from tokens import *
-
 class Lexer:
     def __init__(self, source): 
         """
         source is the file we want to tokenize. We will implement the scanning algorithm
         """
-
-
         self.source = source
         self.start = 0
         self.curr = 0
@@ -114,6 +111,8 @@ class Lexer:
             elif ch == '%': self.add_token(TOK_MOD)
             elif ch == '=':
                 if  self.match('='):
+                    self.add_token(TOK_EQEQ)
+                else:
                     self.add_token(TOK_EQ)
             elif ch == '~':
                 if self.match('='):
